@@ -44,7 +44,15 @@ html, body, #markdown-editor, #main-context {
 <div id="markdown-editor" class="container">
     <div id="main-context" class="row">
         <div id="editor" class="col-md-6">
-            <textarea id='input'></textarea>
+            <textarea id='input'>
+# Markdown Editor Sample
+
++ Bootstrap
++ Vue.js
++ CodeMirror
++ Marked.js
++ Highlight.js
+            </textarea>
         </div>
         <div id="preview" class="col-md-6" v-html="input | marked"></div>
     </div>
