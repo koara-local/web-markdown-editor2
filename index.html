@@ -20,33 +20,54 @@
 
 
 <style type="text/css">
-html, body, #editor {
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  color: #333;
+html, body, #markdown-editor, #main-context {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+}
+
+#editor, #preview {
+    height: 100%;
 }
 
 .CodeMirror {
-  display: inline-block;
-  border: 1px solid #eee;
-  height: auto;
-  width: 100%;
+    display: inline-block;
+    border: 1px solid #eee;
+    height: 100%;
+    width: 100%;
 }
 </style>
 
-<div id="editor" class="container">
-    <div class="row">
-        <div class="col-md-6">
+<div id="markdown-editor" class="container">
+    <div id="main-context" class="row">
+        <div id="editor" class="col-md-6">
             <textarea id='input'></textarea>
         </div>
-        <div class="col-md-6" v-html="input | marked"></div>
+        <div id="preview" class="col-md-6" v-html="input | marked"></div>
     </div>
 </div>
 
 <script>
 (function() {
+
+var vue = new Vue({
+    el: '#preview',
+    data: {
+        input: ''
+    },
+    filters: {
+        marked: marked
+    }
+})
+
+marked.setOptions({
+    highlight: function(code, lang) {
+        return hljs.highlightAuto(code, [lang]).value;
+    }
+});
 
 var cm = CodeMirror.fromTextArea(document.getElementById('input'), {
     mode: "markdown",
@@ -56,24 +77,8 @@ var cm = CodeMirror.fromTextArea(document.getElementById('input'), {
     showCursorWhenSelecting: true
 });
 
-var vue = new Vue({
-    el: '#editor',
-    data: {
-        input: '# hello'
-    },
-    filters: {
-        marked: marked
-    }
-})
-
 cm.on("change", function(cm, change) {
   vue.input = cm.getValue();
-});
-
-marked.setOptions({
-    highlight: function(code, lang) {
-        return hljs.highlightAuto(code, [lang]).value;
-    }
 });
 
 }).call(this);
