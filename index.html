@@ -29,8 +29,17 @@ html, body, #markdown-editor, #main-context {
     color: #333;
 }
 
-#editor, #preview {
+#editor {
+    margin: 0;
+    padding: 0;
     height: 100%;
+}
+
+#preview {
+    margin: 0;
+    padding: 10;
+    height: 100%;
+    background: #eee;
 }
 
 .CodeMirror {
@@ -44,7 +53,7 @@ html, body, #markdown-editor, #main-context {
 <div id="markdown-editor" class="container">
     <div id="main-context" class="row">
         <div id="editor" class="col-md-6">
-            <textarea id='input'>
+<textarea id='input'>
 # Markdown Editor Sample
 
 + Bootstrap
@@ -52,7 +61,7 @@ html, body, #markdown-editor, #main-context {
 + CodeMirror
 + Marked.js
 + Highlight.js
-            </textarea>
+</textarea>
         </div>
         <div id="preview" class="col-md-6" v-html="input | marked"></div>
     </div>
