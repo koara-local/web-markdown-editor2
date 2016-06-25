@@ -77,6 +77,8 @@ var cm = CodeMirror.fromTextArea(document.getElementById('input'), {
     showCursorWhenSelecting: true
 });
 
+vue.input = cm.getValue();
+
 cm.on("change", function(cm, change) {
   vue.input = cm.getValue();
 });
