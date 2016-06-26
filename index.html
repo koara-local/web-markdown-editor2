@@ -61,11 +61,42 @@ html, body, #markdown-editor, #main-context {
 <textarea id='input'>
 # Markdown Editor Sample
 
+## Require
+
 + Bootstrap
 + Vue.js
 + CodeMirror
 + Marked.js
 + Highlight.js
+
+## Syntax Highlight Sample
+
+Python
+
+``` py
+# -*- coding: utf-8 -*- 
+
+def hoge():
+    print "hoge"
+
+if __name__ == "__main__":
+    hoge()
+```
+
+C++
+
+``` cpp
+#include <iostream>
+
+void hoge() {
+	std::cout << "hoge" << std::endl;
+}
+
+int main() {
+	hoge();
+	return 0;
+}
+```<Paste>
 </textarea>
         </div>
         <div id="preview" class="col-md-6" v-html="input | marked"></div>
