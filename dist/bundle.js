@@ -45,13 +45,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var Vue = __webpack_require__(1);
-	// var Marked = require('marked');
-	var md = __webpack_require__(3);
-	var mdEmoji = __webpack_require__(3);
-	import md from "markdown-it"
-	import mdEmoji from "markdown-it-emoji"
-
-	const markdown = md().use(mdEmoji)
+	var Marked = __webpack_require__(3);
 
 	var vue = new Vue({
 	    el: '#preview',
